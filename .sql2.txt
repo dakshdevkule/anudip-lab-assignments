@@ -1,0 +1,341 @@
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| anp_d4848          |
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| student_management |
+| sys                |
+| test               |
++--------------------+
+8 rows in set (0.06 sec)
+
+mysql> use ecommerce;
+Database changed
+mysql> select * from customer;
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 9372374262   |  421301 |       0 |       |         |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar   | 9376674262   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+2 rows in set (0.03 sec)
+
+mysql> update customer set phone_number = '8989765435' where customer_id='c1';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer;
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |       |         |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar   | 9376674262   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+2 rows in set (0.00 sec)
+
+
+
+mysql>  insert into customer values('c4','shiv','mumbai','shiv123@gmail.com','rutughar','8006674262','421301','06','raigad','india');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customer where customer_name like 'd____';
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+1 row in set (0.01 sec)
+
+mysql> select * from customer where customer_name like '%r1';
+Empty set (0.00 sec)
+
+mysql> select * from customer;
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+--------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state  | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+--------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |        |         |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar   | 9376674262   |  421301 |       0 |        |         |
+| c4          | shiv          | mumbai | shiv123@gmail.com    | rutughar   | 8006674262   |  421301 |       6 | raigad | india   |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select *from customer where address like 'w_________';
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where customer_name like 's___';
++-------------+---------------+--------+-------------------+----------+--------------+---------+---------+--------+---------+
+| customer_id | customer_name | city   | email             | address  | phone_number | pincode | bill_no | state  | country |
++-------------+---------------+--------+-------------------+----------+--------------+---------+---------+--------+---------+
+| c4          | shiv          | mumbai | shiv123@gmail.com | rutughar | 8006674262   |  421301 |       6 | raigad | india   |
++-------------+---------------+--------+-------------------+----------+--------------+---------+---------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql>  insert into customer values('c5','bhashi','odisha','bhashi123@gmail.com','olighar','8008874262','421301','09','assam','india');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into customer values('c6','swar','mumbai','swar123@gmail.com','riverdale','8006645262','421309','10','maharashtra','india');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customer;
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email                | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar   | 8989765435   |  421301 |       0 |             |         |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar     | 9376674262   |  421301 |       0 |             |         |
+| c4          | shiv          | mumbai | shiv123@gmail.com    | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com  | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com    | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com  | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+6 rows in set (0.00 sec)
+
+mysql>  insert into customer values('c2','sam','thane','sam123@gmail.com','tilakchowk','8008874262','467301','05','maharashtra','india');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from customer;
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email                | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar   | 8989765435   |  421301 |       0 |             |         |
+| c2          | sam           | thane  | sam123@gmail.com     | tilakchowk   | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar     | 9376674262   |  421301 |       0 |             |         |
+| c4          | shiv          | mumbai | shiv123@gmail.com    | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com  | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com    | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com  | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+7 rows in set (0.00 sec)
+
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email                | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar   | 8989765435   |  421301 |       0 |             |         |
+| c2          | sam           | thane  | sam123@gmail.com     | tilakchowk   | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar     | 9376674262   |  421301 |       0 |             |         |
+| c4          | shiv          | mumbai | shiv123@gmail.com    | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com  | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com    | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com  | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> insert into customer values('c8','ashi','surat','ashi123@gmail.com','tharwani','855679262','671309','11','gujrat','india');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> select distinct city from customer;
++--------+
+| city   |
++--------+
+| mumbai |
+| thane  |
+| odisha |
+| saket  |
+| surat  |
++--------+
+5 rows in set (0.02 sec)
+
+
+mysql> desc product;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| product_id     | varchar(20) | NO   | PRI | NULL    |       |
+| product_name   | varchar(20) | NO   |     | NULL    |       |
+| category       | varchar(20) | NO   |     | NULL    |       |
+| sub_category   | varchar(20) | NO   |     | NULL    |       |
+| original_price | double      | NO   |     | NULL    |       |
+| selling_price  | double      | NO   |     | NULL    |       |
+| stock          | int         | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+mysql> select * from customer where bill_no<4;
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |       |         |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar   | 9376674262   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where bill_no>4;
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email               | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| c2          | sam           | thane  | sam123@gmail.com    | tilakchowk   | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c4          | shiv          | mumbai | shiv123@gmail.com   | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com   | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
+| c8          | ashi          | surat  | ashi123@gmail.com   | tharwani     | 855679262    |  671309 |      11 | gujrat      | india   |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select * from customer where bill_no>=4;
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email               | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| c2          | sam           | thane  | sam123@gmail.com    | tilakchowk   | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c4          | shiv          | mumbai | shiv123@gmail.com   | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com   | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
+| c8          | ashi          | surat  | ashi123@gmail.com   | tharwani     | 855679262    |  671309 |      11 | gujrat      | india   |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select * from customer where bill_no<=4;
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |       |         |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar   | 9376674262   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where customer_name = 'swar' AND bill_no = 4;
+Empty set (0.00 sec)
+
+mysql> select * from customer where customer_name = 'swar' AND bill_no = 10;
++-------------+---------------+--------+-------------------+-----------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email             | address   | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+-------------------+-----------+--------------+---------+---------+-------------+---------+
+| c6          | swar          | mumbai | swar123@gmail.com | riverdale | 8006645262   |  421309 |      10 | maharashtra | india   |
++-------------+---------------+--------+-------------------+-----------+--------------+---------+---------+-------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where customer_name = 'swar' OR bill_no = 5;
++-------------+---------------+--------+-------------------+------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email             | address    | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+-------------------+------------+--------------+---------+---------+-------------+---------+
+| c2          | sam           | thane  | sam123@gmail.com  | tilakchowk | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c6          | swar          | mumbai | swar123@gmail.com | riverdale  | 8006645262   |  421309 |      10 | maharashtra | india   |
++-------------+---------------+--------+-------------------+------------+--------------+---------+---------+-------------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where customer_id between 'c3' and 'c6';
++-------------+---------------+--------+---------------------+-----------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email               | address   | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+---------------------+-----------+--------------+---------+---------+-------------+---------+
+| c3          | rock          | mumbai | rock123@gmail.com   | sumnagar  | 9376674262   |  421301 |       0 |             |         |
+| c4          | shiv          | mumbai | shiv123@gmail.com   | rutughar  | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com | olighar   | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com   | riverdale | 8006645262   |  421309 |      10 | maharashtra | india   |
++-------------+---------------+--------+---------------------+-----------+--------------+---------+---------+-------------+---------+
+4 rows in set (0.02 sec)
+
+mysql> select * from customer where customer_id in ('c1','c2','c4');
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |             |         |
+| c2          | sam           | thane  | sam123@gmail.com     | tilakchowk | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c4          | shiv          | mumbai | shiv123@gmail.com    | rutughar   | 8006674262   |  421301 |       6 | raigad      | india   |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customer where customer_id not in ('c1','c2','c4');
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email               | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| c3          | rock          | mumbai | rock123@gmail.com   | sumnagar     | 9376674262   |  421301 |       0 |             |         |
+| c5          | bhashi        | odisha | bhashi123@gmail.com | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com   | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
+| c8          | ashi          | surat  | ashi123@gmail.com   | tharwani     | 855679262    |  671309 |      11 | gujrat      | india   |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+5 rows in set (0.00 sec)
+
+
+mysql> select * from customer where email is not null;
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email                | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar   | 8989765435   |  421301 |       0 |             |         |
+| c2          | sam           | thane  | sam123@gmail.com     | tilakchowk   | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c3          | rock          | mumbai | rock123@gmail.com    | sumnagar     | 9376674262   |  421301 |       0 |             |         |
+| c4          | shiv          | mumbai | shiv123@gmail.com    | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com  | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com    | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com  | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
+| c8          | ashi          | surat  | ashi123@gmail.com    | tharwani     | 855679262    |  671309 |      11 | gujrat      | india   |
++-------------+---------------+--------+----------------------+--------------+--------------+---------+---------+-------------+---------+
+8 rows in set (0.00 sec)
+
+mysql> select * from customer where state is null;
+Empty set (0.00 sec)
+
+mysql> select * from customer where customer_name like '%me';
+Empty set (0.01 sec)
+
+mysql> select * from customer where customer_name like '%hi';
++-------------+---------------+--------+---------------------+----------+--------------+---------+---------+--------+---------+
+| customer_id | customer_name | city   | email               | address  | phone_number | pincode | bill_no | state  | country |
++-------------+---------------+--------+---------------------+----------+--------------+---------+---------+--------+---------+
+| c5          | bhashi        | odisha | bhashi123@gmail.com | olighar  | 8008874262   |  421301 |       9 | assam  | india   |
+| c8          | ashi          | surat  | ashi123@gmail.com   | tharwani | 855679262    |  671309 |      11 | gujrat | india   |
++-------------+---------------+--------+---------------------+----------+--------------+---------+---------+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where customer_name like '%sh';
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city   | email                | address    | phone_number | pincode | bill_no | state | country |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+| c1          | daksh         | mumbai | devkule123@gmail.com | waylenagar | 8989765435   |  421301 |       0 |       |         |
++-------------+---------------+--------+----------------------+------------+--------------+---------+---------+-------+---------+
+1 row in set (0.01 sec)
+
+
+mysql> select * from customer where customer_name like '%lon%';
++-------------+---------------+-------+---------------------+--------------+--------------+---------+---------+-------+---------+
+| customer_id | customer_name | city  | email               | address      | phone_number | pincode | bill_no | state | country |
++-------------+---------------+-------+---------------------+--------------+--------------+---------+---------+-------+---------+
+| c7          | meloni        | saket | meloni123@gmail.com | chandnichowk | 9786674262   |  521301 |       7 | delhi | india   |
++-------------+---------------+-------+---------------------+--------------+--------------+---------+---------+-------+---------+
+1 row in set (0.00 sec)
+
+
+mysql> select * from customer where customer_name like 'sa%';
++-------------+---------------+-------+------------------+------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city  | email            | address    | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+-------+------------------+------------+--------------+---------+---------+-------------+---------+
+| c2          | sam           | thane | sam123@gmail.com | tilakchowk | 8008874262   |  467301 |       5 | maharashtra | india   |
++-------------+---------------+-------+------------------+------------+--------------+---------+---------+-------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer where address like 'm__________';
+Empty set (0.00 sec)
+
+mysql> select * from customer where state like 'm__________';
++-------------+---------------+--------+-------------------+------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email             | address    | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+-------------------+------------+--------------+---------+---------+-------------+---------+
+| c2          | sam           | thane  | sam123@gmail.com  | tilakchowk | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c6          | swar          | mumbai | swar123@gmail.com | riverdale  | 8006645262   |  421309 |      10 | maharashtra | india   |
++-------------+---------------+--------+-------------------+------------+--------------+---------+---------+-------------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer where country like 'i____';
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| customer_id | customer_name | city   | email               | address      | phone_number | pincode | bill_no | state       | country |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+| c2          | sam           | thane  | sam123@gmail.com    | tilakchowk   | 8008874262   |  467301 |       5 | maharashtra | india   |
+| c4          | shiv          | mumbai | shiv123@gmail.com   | rutughar     | 8006674262   |  421301 |       6 | raigad      | india   |
+| c5          | bhashi        | odisha | bhashi123@gmail.com | olighar      | 8008874262   |  421301 |       9 | assam       | india   |
+| c6          | swar          | mumbai | swar123@gmail.com   | riverdale    | 8006645262   |  421309 |      10 | maharashtra | india   |
+| c7          | meloni        | saket  | meloni123@gmail.com | chandnichowk | 9786674262   |  521301 |       7 | delhi       | india   |
+| c8          | ashi          | surat  | ashi123@gmail.com   | tharwani     | 855679262    |  671309 |      11 | gujrat      | india   |
++-------------+---------------+--------+---------------------+--------------+--------------+---------+---------+-------------+---------+
+6 rows in set (0.00 sec)
+
